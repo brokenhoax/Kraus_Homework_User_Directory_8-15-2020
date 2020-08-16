@@ -67,7 +67,7 @@ const employees = [
   }
 ];
 
-export function getemployees() {
+export function getEmployees() {
   return employees;
 }
 
