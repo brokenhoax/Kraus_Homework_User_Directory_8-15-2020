@@ -6,6 +6,12 @@ class Counter extends Component {
     tags: ['tag1', 'tag2', 'tag3  ']
   };
 
+  constructor() {
+    super();
+    this.handleIncrement = this.handleIncrement.bind(this);
+  }
+
+
   handleIncrement() {
     console.log('Increment Clicked', this);
   }
@@ -22,7 +28,7 @@ class Counter extends Component {
     return (
       <React.Fragment>
         <span className={classes}>{this.formatCount()}</span>
-        <button onClick={} className="btn btn-secondary btn-sm">Increment</button>
+        <button onClick={this.handleIncrement} className="btn btn-secondary btn-sm">Increment</button>
         <div>{ this.renderTags() }</div>
       </React.Fragment>
     );
