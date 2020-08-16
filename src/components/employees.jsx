@@ -26,32 +26,33 @@ class Employees extends Component {
 
     return (
       <React.Fragment>
-        
-        <p>Showing {this.state.employees.length} Employees in the database.</p>
-        <table className="table">
-          <thead>
-            <tr>
-              <th>Photo</th>
-              <th>Name</th>
-              <th>Department</th>
-              <th>Sick Days</th>
-              <th>Rating</th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
-            { this.state.employees.map(employee => ( 
-              <tr key={employee._id}>
-                <td>{<img height={40} src={employee.photo}></img>}</td>
-                <td>{employee.name}</td>
-                <td>{employee.department.name}</td>
-                <td>{employee.sickDays}</td>
-                <td>{employee.employeeRank}</td>
-                <td><button onClick={() => this.handleDelete(employee)} className="btn btn-danger btn-sm">Delete</button></td>
+        <main role="main" className="container">
+          <p>Showing {this.state.employees.length} Employees in the database.</p>
+          <table className="table">
+            <thead>
+              <tr>
+                <th>Photo</th>
+                <th>Name</th>
+                <th>Department</th>
+                <th>Sick Days</th>
+                <th>Rating</th>
+                <th></th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              { this.state.employees.map(employee => ( 
+                <tr key={employee._id}>
+                  <td>{<img height={40} src={employee.photo}></img>}</td>
+                  <td>{employee.name}</td>
+                  <td>{employee.department.name}</td>
+                  <td>{employee.sickDays}</td>
+                  <td>{employee.employeeRank}</td>
+                  <td><button onClick={() => this.handleDelete(employee)} className="btn btn-danger btn-sm">Delete</button></td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+          </main>
       </React.Fragment>
     )
   }

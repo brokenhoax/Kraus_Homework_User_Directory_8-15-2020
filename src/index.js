@@ -5,13 +5,14 @@ import App from "./App.js";
 import * as serviceWorker from './serviceWorker';
 import 'bootstrap/dist/css/bootstrap.css';
 import '@fortawesome/fontawesome-free/css/fontawesome.css';
-import Counter from './components/counter';
+import Employees from './components/employees';
+
 
 ReactDOM.render(
-  <React.StrictMode>
+  <React.Fragment>
     <App />
-    <Counter />
-  </React.StrictMode>,
+    <Employees />
+  </React.Fragment>,
   document.getElementById('root')
 );
 
