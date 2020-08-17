@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import NavBar from './components/navbar';
-import Employees from './components/employees';
 import Counters from './components/counters';
 import './App.css';
 
@@ -15,14 +14,47 @@ class App extends Component {
     ]
   };
 
+  // Controlled Component Receives All Data Via Props
+  // Controlled by Parent (Counters)
+  constructor(props) {
+    super(props);
+    console.log('App - Constructor');
+    // this.state = this.props.something;
+  }
+
+  componentDidMount() {
+    // AJAX Call
+    console.log('App - Mounted');
+  
+  }
+
   handleIncrement = counter => {
+    // Clone the Array
     const counters = [...this.state.counters];
     const index = counters.indexOf(counter);
     counters[index] = {...counter};
     counters[index].value++;
+    // Have React Update The New State:
     this.setState({ counters })
     console.log(counters[index])
   }
+
+  handleDecrement = counter => {
+    // Clone the Array
+    const counters = [...this.state.counters];
+    const index = counters.indexOf(counter);
+    counters[index] = {...counter};
+    counters[index].value--;
+    // Have React Update The New State:
+    this.setState({ counters })
+    console.log(counters[index])
+  }
+
+
+  handleDelete = (counterId) =>  {
+    const counters = this.state.counters.filter(c => c.id !== counterId);
+    this.setState({ counters });
+  };
 
   handleReset = () => {
     const counters = this.state.counters.map(c => {
@@ -32,12 +64,8 @@ class App extends Component {
     this.setState({ counters });
   }
 
-  handleDelete = (counterId) =>  {
-    const counters = this.state.counters.filter(c => c.id !== counterId);
-    this.setState({ counters });
-  };
-
   render() {
+    console.log('App - Rendered');
     return (
       <React.Fragment>
         <NavBar totalCounters={this.state.counters.filter(c => c.value > 0).length}/>
@@ -46,6 +74,7 @@ class App extends Component {
           counters={this.state.counters}
           onReset={this.handleReset}
           onIncrement={this.handleIncrement}
+          onDecrement={this.handleDecrement}
           onDelete={this.handleDelete}
           />
         </main>

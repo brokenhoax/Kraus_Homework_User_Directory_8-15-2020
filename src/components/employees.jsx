@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { getEmployee, getEmployees } from "../services/employeeDb";
+import { getEmployees } from "../services/employeeDb";
 
 class Employees extends Component {
   state = {
@@ -42,7 +42,7 @@ class Employees extends Component {
             <tbody>
               { this.state.employees.map(employee => ( 
                 <tr key={employee._id}>
-                  <td>{<img height={40} src={employee.photo}></img>}</td>
+                  <td>{<img height={40} alt="Employee" src={employee.photo}></img>}</td>
                   <td>{employee.name}</td>
                   <td>{employee.department.name}</td>
                   <td>{employee.sickDays}</td>
