@@ -13,6 +13,14 @@ class Employees extends Component {
     return <table>{ this.state.employees.map(name => <tr key={name}>{name}</tr>)}</table>;
   }
 
+  handleLike = employee => {
+    const employees = [...this.state.employees];
+    const index = employees.indexOf(employee);
+    employees[index] = {...employees[index]};
+    employees[index].liked = !employees[index].liked;
+    this.setState({ employees });
+    
+  }
 
   handleDelete = employee => {
     // console.log(employee);
@@ -50,7 +58,7 @@ class Employees extends Component {
                   <td>{employee.sickDays}</td>
                   <td>{employee.employeeRank}</td>
                   <td>
-                    <Like />
+                    <Like liked={employee.liked} onClick={() => this.handleLike(employee)}/>
                   </td> 
                   <td><button onClick={() => this.handleDelete(employee)} className="btn btn-danger btn-sm">Delete</button></td>
                 </tr>

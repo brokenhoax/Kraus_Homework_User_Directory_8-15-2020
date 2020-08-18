@@ -9,7 +9,7 @@ const employees = [
     sickDays: 6,
     employeeRank: 2.5,
     publishDate: "2018-01-03T19:04:28.809Z",
-    favorite: false
+    liked: true
   },
   {
     _id: "5b21ca3eeb7f6fbccd471816",
@@ -18,7 +18,7 @@ const employees = [
     department: { _id: "5b21ca3eeb7f6fbccd471818", name: "Sales" },
     sickDays: 5,
     employeeRank: 2.5,
-    favorite: false
+    liked: true
   },
   {
     _id: "5b21ca3eeb7f6fbccd471817",
@@ -27,7 +27,7 @@ const employees = [
     department: { _id: "5b21ca3eeb7f6fbccd471820", name: "Marketing" },
     sickDays: 8,
     employeeRank: 3.5,
-    favorite: false
+    liked: false
   },
   {
     _id: "5b21ca3eeb7f6fbccd471819",
@@ -36,7 +36,7 @@ const employees = [
     department: { _id: "5b21ca3eeb7f6fbccd471814", name: "Operations" },
     sickDays: 7,
     employeeRank: 3.5,
-    favorite: false
+    liked: false
   },
   {
     _id: "5b21ca3eeb7f6fbccd47181a",
@@ -45,7 +45,7 @@ const employees = [
     department: { _id: "5b21ca3eeb7f6fbccd471814", name: "Operations" },
     sickDays: 7,
     employeeRank: 3.5,
-    favorite: false
+    liked: false
   },
   {
     _id: "5b21ca3eeb7f6fbccd47181b",
@@ -54,7 +54,7 @@ const employees = [
     department: { _id: "5b21ca3eeb7f6fbccd471814", name: "Operations" },
     sickDays: 7,
     employeeRank: 3.5,
-    favorite: false
+    liked: false
   },
   {
     _id: "5b21ca3eeb7f6fbccd47181e",
@@ -63,7 +63,7 @@ const employees = [
     department: { _id: "5b21ca3eeb7f6fbccd471820", name: "Marketing" },
     sickDays: 7,
     employeeRank: 4.5,
-    favorite: false
+    liked: false
   },
   {
     _id: "5b21ca3eeb7f6fbccd47181f",
@@ -72,7 +72,7 @@ const employees = [
     department: { _id: "5b21ca3eeb7f6fbccd471820", name: "Marketing" },
     sickDays: 4,
     employeeRank: 3.5,
-    favorite: false
+    liked: false
   },
   {
     _id: "5b21ca3eeb7f6fbccd471821",
@@ -81,7 +81,7 @@ const employees = [
     department: { _id: "5b21ca3eeb7f6fbccd471818", name: "Sales" },
     sickDays: 7,
     employeeRank: 3.5,
-    favorite: false
+    liked: false
   }
 ];
 
