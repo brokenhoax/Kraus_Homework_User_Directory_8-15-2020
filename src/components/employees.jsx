@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import { getEmployees } from "../services/employeeDb";
+import Like from "./common/like";
+
 
 class Employees extends Component {
   state = {
@@ -18,7 +20,6 @@ class Employees extends Component {
     this.setState({ employees });
   };
 
-
   render() {
     const { length: count } = this.state.employees
     if (count === 0 )
@@ -36,6 +37,7 @@ class Employees extends Component {
                 <th>Department</th>
                 <th>Sick Days</th>
                 <th>Rating</th>
+                <th>Favorite</th>
                 <th></th>
               </tr>
             </thead>
@@ -47,6 +49,9 @@ class Employees extends Component {
                   <td>{employee.department.name}</td>
                   <td>{employee.sickDays}</td>
                   <td>{employee.employeeRank}</td>
+                  <td>
+                    <Like />
+                  </td> 
                   <td><button onClick={() => this.handleDelete(employee)} className="btn btn-danger btn-sm">Delete</button></td>
                 </tr>
               ))}

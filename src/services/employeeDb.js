@@ -8,7 +8,8 @@ const employees = [
     department: { _id: "5b21ca3eeb7f6fbccd471818", name: "Sales" },
     sickDays: 6,
     employeeRank: 2.5,
-    publishDate: "2018-01-03T19:04:28.809Z"
+    publishDate: "2018-01-03T19:04:28.809Z",
+    favorite: false
   },
   {
     _id: "5b21ca3eeb7f6fbccd471816",
@@ -16,7 +17,8 @@ const employees = [
     name: "Abe",
     department: { _id: "5b21ca3eeb7f6fbccd471818", name: "Sales" },
     sickDays: 5,
-    employeeRank: 2.5
+    employeeRank: 2.5,
+    favorite: false
   },
   {
     _id: "5b21ca3eeb7f6fbccd471817",
@@ -24,7 +26,8 @@ const employees = [
     name: "Homer",
     department: { _id: "5b21ca3eeb7f6fbccd471820", name: "Marketing" },
     sickDays: 8,
-    employeeRank: 3.5
+    employeeRank: 3.5,
+    favorite: false
   },
   {
     _id: "5b21ca3eeb7f6fbccd471819",
@@ -32,7 +35,8 @@ const employees = [
     name: "Lisa",
     department: { _id: "5b21ca3eeb7f6fbccd471814", name: "Operations" },
     sickDays: 7,
-    employeeRank: 3.5
+    employeeRank: 3.5,
+    favorite: false
   },
   {
     _id: "5b21ca3eeb7f6fbccd47181a",
@@ -40,7 +44,8 @@ const employees = [
     name: "Marge",
     department: { _id: "5b21ca3eeb7f6fbccd471814", name: "Operations" },
     sickDays: 7,
-    employeeRank: 3.5
+    employeeRank: 3.5,
+    favorite: false
   },
   {
     _id: "5b21ca3eeb7f6fbccd47181b",
@@ -48,7 +53,8 @@ const employees = [
     name: "Maggie",
     department: { _id: "5b21ca3eeb7f6fbccd471814", name: "Operations" },
     sickDays: 7,
-    employeeRank: 3.5
+    employeeRank: 3.5,
+    favorite: false
   },
   {
     _id: "5b21ca3eeb7f6fbccd47181e",
@@ -56,7 +62,8 @@ const employees = [
     name: "Flanders",
     department: { _id: "5b21ca3eeb7f6fbccd471820", name: "Marketing" },
     sickDays: 7,
-    employeeRank: 4.5
+    employeeRank: 4.5,
+    favorite: false
   },
   {
     _id: "5b21ca3eeb7f6fbccd47181f",
@@ -64,7 +71,8 @@ const employees = [
     name: "Krusty the Clown",
     department: { _id: "5b21ca3eeb7f6fbccd471820", name: "Marketing" },
     sickDays: 4,
-    employeeRank: 3.5
+    employeeRank: 3.5,
+    favorite: false
   },
   {
     _id: "5b21ca3eeb7f6fbccd471821",
@@ -72,7 +80,8 @@ const employees = [
     name: "Mr. Burns",
     department: { _id: "5b21ca3eeb7f6fbccd471818", name: "Sales" },
     sickDays: 7,
-    employeeRank: 3.5
+    employeeRank: 3.5,
+    favorite: false
   }
 ];
 

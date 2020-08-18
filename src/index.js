@@ -4,7 +4,6 @@ import './index.css';
 import App from "./App.js";
 import * as serviceWorker from './serviceWorker';
 import 'bootstrap/dist/css/bootstrap.css';
-import '@fortawesome/fontawesome-free/css/fontawesome.css';
 import Employees from './components/employees';
 
 
