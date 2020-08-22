@@ -1,11 +1,19 @@
 import React, { Component } from "react";
 import { getEmployees } from "../services/employeeDb";
-import Like from "./common/like";
-
+import EmployeesTable from "./employeesTable";
+import ListGroup from "./common/listGroup";
+import Pagination from "./common/pagination";
+import { paginate } from "../utils/paginate";
+import { getDepartments } from "../services/departmentDb";
+import _ from "lodash";
 
 class Employees extends Component {
   state = {
-    employees: getEmployees()
+    employees: [],
+    departments: [],
+    currentPage: 1,
+    pageSize: 4, 
+    sortColumn: { path: 'title', order: 'asc' }, 
   };
 
   renderEmployees() {
@@ -28,47 +36,71 @@ class Employees extends Component {
     this.setState({ employees });
   };
 
+  handlePageChange = page => {
+    this.setState({ currentPage: page });
+  }
+
+  componentDidMount() {
+    const departments = [{ _id: "", name: "All Departments"}, ...getDepartments()]
+    this.setState({ employees: getEmployees(), departments });
+  }
+
+  handleDepartmentSelect = department => {
+    this.setState({ selectedDepartment: department, currentPage: 1 });
+  }
+
+  handleSort = sortColumn => {
+    
+    this.setState({ sortColumn })
+  }
+
   render() {
     const { length: count } = this.state.employees
-    if (count === 0 )
-      return <p>There are no employees in the database.</p>;
+    const { 
+      pageSize, 
+      currentPage, 
+      sortColumn,
+      selectedDepartment, 
+      employees: allEmployees
+    } = this.state;
+
+    if (count === 0 ) return <p>There are no employees in the database.</p>;
+
+    const filtered = selectedDepartment && selectedDepartment._id ? allEmployees.filter(e => e.department._id === selectedDepartment._id) : allEmployees;
+
+    const sorted= _.orderBy(filtered, [sortColumn.path], [sortColumn.order])
+
+    const employees = paginate(sorted, currentPage, pageSize);
 
     return (
-      <React.Fragment>
-        <main role="main" className="container">
-          <p>Showing {this.state.employees.length} Employees in the database.</p>
-          <table className="table">
-            <thead>
-              <tr>
-                <th>Photo</th>
-                <th>Name</th>
-                <th>Department</th>
-                <th>Sick Days</th>
-                <th>Rating</th>
-                <th>Favorite</th>
-                <th></th>
-              </tr>
-            </thead>
-            <tbody>
-              { this.state.employees.map(employee => ( 
-                <tr key={employee._id}>
-                  <td>{<img height={40} alt="Employee" src={employee.photo}></img>}</td>
-                  <td>{employee.name}</td>
-                  <td>{employee.department.name}</td>
-                  <td>{employee.sickDays}</td>
-                  <td>{employee.employeeRank}</td>
-                  <td>
-                    <Like liked={employee.liked} onClick={() => this.handleLike(employee)}/>
-                  </td> 
-                  <td><button onClick={() => this.handleDelete(employee)} className="btn btn-danger btn-sm">Delete</button></td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-          </main>
-      </React.Fragment>
+      <div className="row">
+        <div className="col-2">
+          <ListGroup 
+            items={this.state.departments}
+            selectedItem={this.state.selectedDepartment}
+            onItemSelect={this.handleDepartmentSelect}
+            />
+        </div>
+        <div className="col">        
+          <main role="main" className="container">
+            <p>Showing {filtered.length} Employees in the database.</p>
+            <EmployeesTable 
+              employees={employees}
+              onLike={this.handleLike}
+              onDelete={this.handleDelete}
+              onSort={this.handleSort}
+              sortColumn={sortColumn}
+            />
+            <Pagination 
+              itemsCount={filtered.length} 
+              pageSize={pageSize}
+              currentPage={currentPage} 
+              onPageChange={this.handlePageChange} />
+            </main>
+          </div>
+      </div>
     )
   }
 }
 
-export default Employees; 
+export default Employees;

@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from "./App.js";
+import Calculator from "./components/Calculator.js";
 import * as serviceWorker from './serviceWorker';
 import 'bootstrap/dist/css/bootstrap.css';
 import Employees from './components/employees';
@@ -9,7 +9,7 @@ import Employees from './components/employees';
 
 ReactDOM.render(
   <React.Fragment>
-    <App />
+    <Calculator />
     <Employees />
   </React.Fragment>,
   document.getElementById('root')
