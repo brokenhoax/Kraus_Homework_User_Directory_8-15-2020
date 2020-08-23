@@ -9,7 +9,7 @@ import Employees from './components/employees';
 
 ReactDOM.render(
   <React.Fragment>
-    <Calculator />
+    {/* <Calculator /> */}
     <Employees />
   </React.Fragment>,
   document.getElementById('root')

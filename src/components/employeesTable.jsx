@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import Like from "./common/like";
-import TableHeader from "./common/tableHeader";
-import TableBody from "./common/tableBody";
+import Table from "./common/table";
 
 class EmployeesTable extends Component {
 
@@ -16,34 +15,15 @@ class EmployeesTable extends Component {
   ];
   
   render() { 
-    const { employees, onDelete, onLike, onSort, sortColumn } = this.props;
+    const { employees, onSort, sortColumn } = this.props;
 
     return ( 
-      <table className="table">
-      <TableHeader
-        columns={this.columns}
-        sortColumn={sortColumn}
-        onSort={onSort}
+      <Table 
+        columns={this.columns} 
+        data={employees} 
+        sortColumn={sortColumn} 
+        onSort={onSort} 
       />
-      <TableBody 
-      data={employees}
-      columns={this.columns}/>
-      {/* <tbody>
-        { employees.map(employee => ( 
-          <tr key={employee._id}>
-            <td>{<img height={40} alt="Employee" src={employee.photo}></img>}</td>
-            <td>{employee.name}</td>
-            <td>{employee.department.name}</td>
-            <td>{employee.sickDays}</td>
-            <td>{employee.employeeRank}</td>
-            <td>
-              
-            </td> 
-            <td><button onClick={() => this.props.onDelete(employee)} className="btn btn-danger btn-sm">Delete</button></td>
-          </tr>
-        ))}
-      </tbody> */}
-    </table>
     );
   }
 }

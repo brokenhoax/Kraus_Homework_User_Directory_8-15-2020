@@ -54,8 +54,8 @@ class Employees extends Component {
     this.setState({ sortColumn })
   }
 
-  render() {
-    const { length: count } = this.state.employees
+  getPageData = () => {
+    
     const { 
       pageSize, 
       currentPage, 
@@ -64,13 +64,25 @@ class Employees extends Component {
       employees: allEmployees
     } = this.state;
 
+    const filtered = selectedDepartment && selectedDepartment._id ? allEmployees.filter(e => e.department._id === selectedDepartment._id) : allEmployees;
+    const sorted = _.orderBy(filtered, [sortColumn.path], [sortColumn.order])
+    const employees = paginate(sorted, currentPage, pageSize);
+    return { totalCount: filtered.length, data: employees };
+
+  }
+
+  render() {
+    const { length: count } = this.state.employees;
+
+    const { 
+      pageSize, 
+      currentPage, 
+      sortColumn,
+    } = this.state;
+
     if (count === 0 ) return <p>There are no employees in the database.</p>;
 
-    const filtered = selectedDepartment && selectedDepartment._id ? allEmployees.filter(e => e.department._id === selectedDepartment._id) : allEmployees;
-
-    const sorted= _.orderBy(filtered, [sortColumn.path], [sortColumn.order])
-
-    const employees = paginate(sorted, currentPage, pageSize);
+    const { totalCount, data: employees } = this.getPageData();
 
     return (
       <div className="row">
@@ -83,7 +95,7 @@ class Employees extends Component {
         </div>
         <div className="col">        
           <main role="main" className="container">
-            <p>Showing {filtered.length} Employees in the database.</p>
+            <p>Showing {totalCount} Employees in the database.</p>
             <EmployeesTable 
               employees={employees}
               onLike={this.handleLike}
@@ -92,7 +104,7 @@ class Employees extends Component {
               sortColumn={sortColumn}
             />
             <Pagination 
-              itemsCount={filtered.length} 
+              itemsCount={totalCount} 
               pageSize={pageSize}
               currentPage={currentPage} 
               onPageChange={this.handlePageChange} />
